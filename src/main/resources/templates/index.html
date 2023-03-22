@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+
+<script>
+function deleteEmployee(id) {
+
+  if (confirm('Are you sure to delete Employee '+id+'?')) {
+    window.location='/deleteEmployee?id='+id
+  }
+}
+</script>
+
+<div class="container">
+
+<h1>Spring MVC and Data Example</h1>
+
+<button type="button" class="btn btn-primary" onclick="window.location='/addEmployee'">Add New Employee</button>
+<p/>
+<table class="table table-bordered" th:if="${employees.size>0}">
+ <thead class="table-dark">
+<tr><td>ID</td><td>First Name</td><td>Last Name</td><td>Email</td><td>Update</td><td>Delete</td></tr>
+</thead>
+<tr th:each="employee: ${employees}">
+    <td th:text="${employee.id}" />
+    <td th:text="${employee.firstName}" />
+    <td th:text="${employee.lastName}" />
+    <td th:text="${employee.email}" />
+    <td><a th:href="'/editEmployee?id='+${employee.id}">Update</a></td>
+    <td><a th:href="'javascript:deleteEmployee('+${employee.id}+')'">Delete</td>
+<!--/*    <td><a th:href="'/deleteEmployee?id='+${employee.id}">Delete</a></td> */-->
+</tr>
+</table>
+</div>
+
+
+</body>
+</html>

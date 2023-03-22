@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+<h2 th:text="${title}"/>
+<form name="theform" method="post" th:action="${theaction}">
+<table>
+<tr th:if="${#strings.equals(title,'Edit Employee')}">
+<td>ID</td>
+<td>
+<div th:remove="tag" th:text="${employee.id}"/>
+<input type="hidden" name="id" th:value="${employee.id}"/>
+</td>
+</tr>
+<tr>
+<td>First Name</td><td><input type="text" name="firstName" th:value="${employee.firstName}"/></td>
+</tr>
+<tr>
+<td>Last Name</td><td><input type="text" name="lastName" th:value="${employee.lastName}"/></td>
+</tr>
+<tr>
+<td>Email</td><td><input type="text" name="email" th:value="${employee.email}"/></td>
+</tr>
+</table>
+<input class="btn btn-primary" type="submit" value="Submit"/>
+<input class="btn btn-secondary" type="button" value="Cancel" onclick="window.location='/'"/>
+</form>
+</div>
+
+</body>
+</html>
