@@ -8,16 +8,18 @@ I started with Spring Initializer, with 3 dependencies Spring Web, Thymeleaf, an
 
 <img src="screenshot/springinit.png" width="500"/>
 
+Set up application properties to use JPA spring datasource and H2.
+
 I configured it so it the h2 console may be launched with http://localhost:8080/h2-console/ The ddl-auto property is set to create-drop so the table will be dropped and re-created every time. It is easy to change to another database and not recreate every time.
 
-I started with the Entity class, then created a JpaRepository which provides me basic methods for CRUD without a single line of code. 
-Then I wrote a Service class to interact with this repository.
+I started with the Employee Entity class, then created a JpaRepository interface which provides me basic methods for CRUD without a single line of code. 
+Then I wrote a Service class to interact with this repository to provide methods to add/change/delete.
 
-Then I wrote Spring MVC Controllers to add/change/delete employees. http://localhost:8080
+Then I wrote Spring MVC Controllers to use these methods in a web app, and add a little bootstrap styles. http://localhost:8080
 <img src="screenshot/webapp.png" width="500"/>
 
-Then I wrote a RestController so it can be interacted with API.
+Then I wrote a RestController so the Entity can be interacted with REST API.
 
-Then I hooked up Swagger UI so documenting and testing the API will be easy http://localhost:8080/swagger-ui/index.html
+Then I hooked up Swagger UI (springdoc-openapi-starter-webmvc-ui) so documenting and testing the API will be easy http://localhost:8080/swagger-ui/index.html
 
 <img src="screenshot/swagger.png" width="500"/>
