@@ -37,9 +37,10 @@ public class EmployeeService {
     	e.setFirstName(firstName);
     	e.setLastName(lastName);
     	Example<Employee> example = Example.of(e);
-        Optional<Employee> result = employeeRepository.findOne(example);
-        if (result.isPresent()) return result.get();
-        return null;
+
+        return employeeRepository
+                .findOne(example)
+                .orElse(null);
     }
     
     public Employee createEmployee(Employee Employee) {
@@ -55,13 +56,9 @@ public class EmployeeService {
     }
 
     public Employee getEmployeeById(Long id) {
-		Optional<Employee> employee = employeeRepository.findById(id);
-		if (employee.isPresent()) {
-			return employee.get();
-		}
-		else {
-			return null;
-		}
+        return employeeRepository
+                .findById(id)
+                .orElse(null);
     }
     
     public List<Employee> getSomeEmployees(Integer pageNo, Integer pageSize)
